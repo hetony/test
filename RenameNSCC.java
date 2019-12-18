@@ -35,26 +35,31 @@ public class RenameNSCC {
                 File myfile = file_array[i];
                 
                 String fileName = myfile.getName();
-                if (fileName.contains("12-Dec-19")) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+                
+                String dateFrom = "12-Dec-19";
+                String dateTo = "13-Dec-19";
+                
+                if (fileName.contains(dateFrom) && sdf.format(myfile.lastModified()).contains(dateTo)) {
                 	
-                	String newFileName = folder_path + "/" + fileName.replace("12-Dec-19", "13-Dec-19");
-                	System.out.println("newFileName=" + newFileName);
+                	String newFileName = folder_path + "/" + fileName.replace(dateFrom, dateTo);
+                	System.out.println("oldFileName=" + fileName + " => newFileName=" + newFileName);
                 	//myfile.renameTo(new File(newFileName));
                 }
                 
-                /*
-                System.out.println("Before Format : " + myfile.lastModified());
+                
+                //System.out.println("Before Format : " + myfile.lastModified());
             	
-            	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            	
             		
-            	System.out.println("After Format : " + sdf.format(myfile.lastModified()));
+            	//System.out.println("After Format : " + sdf.format(myfile.lastModified()));
                 
-                System.out.println(convertTime(myfile.lastModified()));
+                //System.out.println(convertTime(myfile.lastModified()));
                 
-                System.out.println(myfile.getName() + " creation time :"
-                        + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
-                                   .format(getCreationTime(myfile).toMillis()));
-                
+                //System.out.println(myfile.getName() + " creation time :"
+                //        + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+                //                   .format(getCreationTime(myfile).toMillis()));
+                /*
                 String long_file_name = file_array[i].getName(); 
                 
                 String[] tokens = long_file_name.split("\\s"); 
